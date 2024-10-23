@@ -22,7 +22,8 @@ Here the steps to **setup** the environment:
 3. Login into WordPress.
 4. Go to "*Plugins*": [http://localhost:1337/wp-admin/plugins.php](http://localhost:1337/wp-admin/plugins.php).
 5. Click on "*Activate*" under the "*Jetpack*" plugin. **DO NOT UPDATE IT**, since we need the vulnerable version.
-6. TODO
+6. Go to "*Jetpack*" > "*Settings*" > "*Writing*" and, in the "*Composing*" section, enable "*Jetpack Blocks give you the power to deliver quality content that hooks website visitors without needing to hire a developer or learn a single line of code.*".
+7. Create a new page in WordPress adding the "*Contact Form*".
 
 The container will be called `vuln-wp-jetpack`.
 
