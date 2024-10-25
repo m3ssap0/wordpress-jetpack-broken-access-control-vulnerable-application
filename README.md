@@ -20,10 +20,12 @@ Here the steps to **setup** the environment:
 1. Launch `./up.sh` to start composition.
 2. Complete the installation of WordPress here: [http://localhost:1337/wp-admin/install.php](http://localhost:1337/wp-admin/install.php).
 3. Login into WordPress.
-4. Go to "*Plugins*": [http://localhost:1337/wp-admin/plugins.php](http://localhost:1337/wp-admin/plugins.php).
-5. Click on "*Activate*" under the "*Jetpack*" plugin. **DO NOT UPDATE IT**, since we need the vulnerable version.
-6. Go to "*Jetpack*" > "*Settings*" > "*Writing*" and, in the "*Composing*" section, enable "*Jetpack Blocks give you the power to deliver quality content that hooks website visitors without needing to hire a developer or learn a single line of code.*".
-7. Create a new page in WordPress adding the "*Contact Form*".
+4. Go to "*Tools*" > "*Network Setup*" ([http://localhost:1337/wp-admin/network.php](http://localhost:1337/wp-admin/network.php)) and complete manually the multisite configuration (accessing to the running container).
+   * It should be sufficient to complete the step #1: network configuration rules for `wp-config.php`.
+5. Go to "*Plugins*": [http://localhost:1337/wp-admin/plugins.php](http://localhost:1337/wp-admin/plugins.php).
+6. Click on "*Activate*" under the "*Jetpack*" plugin. **DO NOT UPDATE IT**, since we need the vulnerable version.
+7. Go to "*Jetpack*" > "*Settings*" > "*Writing*" and, in the "*Composing*" section, enable "*Jetpack Blocks give you the power to deliver quality content that hooks website visitors without needing to hire a developer or learn a single line of code.*".
+8. Create a new page in WordPress adding a "*Contact Form*" element.
 
 The container will be called `vuln-wp-jetpack`.
 
@@ -31,11 +33,30 @@ To **teardown** the environment use `./down.sh` command or `./down_and_delete.sh
 
 ## Root cause
 
-TODO
+Having a look at the [fix](https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd), it's trivial to understand that the only check performed, by both `get_items_permissions_check()` and `get_item_permissions_check()` methods, is the membership of the user to the blog.
+
+Both methods are declared in the `Contact_Form_Endpoint` class of the `automattic/jetpack-forms/src/contact-form/class-contact-form-endpoint.php` file. As the comment at the beginning of the class says, this class is...
+> Used as `rest_controller_class` parameter when `feedback` post type is registered in \Automattic\Jetpack\Forms\ContactForm\Contact_Form
+
+This can be seen in the `automattic/jetpack-forms/src/contact-form/class-contact-form-plugin.php` file at line 201, where the `feedback` custom post type is registered.
+
+The available types can be retrieved via REST APIs with a request like the following.
+
+```
+GET /?rest_route=/wp/v2/types
+```
+
+The response contains the `feedback` type.
 
 ## Exploit
 
-TODO
+To exploit the vulnerability, a request like the following is sufficient.
+
+```
+GET /?rest_route=/wp/v2/feedback
+```
+
+The request must contains cookies of a logged user of the blog.
 
 ## Authors
 
