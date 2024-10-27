@@ -36,7 +36,7 @@ To **teardown** the environment use `./down.sh` command or `./down_and_delete.sh
 Having a look at the [fix](https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd), it's trivial to understand that the only check performed, by both `get_items_permissions_check()` and `get_item_permissions_check()` methods, is the membership of the user to the blog.
 
 Both methods are declared in the `Contact_Form_Endpoint` class of the `automattic/jetpack-forms/src/contact-form/class-contact-form-endpoint.php` file. As the comment at the beginning of the class says, this class is...
-> Used as `rest_controller_class` parameter when `feedback` post type is registered in \Automattic\Jetpack\Forms\ContactForm\Contact_Form
+> Used as `rest_controller_class` parameter when `feedback` post type is registered in `\Automattic\Jetpack\Forms\ContactForm\Contact_Form`
 
 This can be seen in the `automattic/jetpack-forms/src/contact-form/class-contact-form-plugin.php` file at line 201, where the `feedback` custom post type is registered.
 
