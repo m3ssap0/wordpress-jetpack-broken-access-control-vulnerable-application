@@ -1,12 +1,12 @@
 # wordpress-jetpack-broken-access-control-vulnerable-application
 
-This is a vulnerable application to test the exploit for the **Jetpack** broken access control.
+This is a vulnerable application to test the exploit for the **Jetpack** 13.9 broken access control.
 
 ## WARNING!
 
 **This application contains serious security vulnerabilities. Run it at your own risk! It is recommended using a backed-up and sheltered environment (such as a VM with a recent snapshot and host-only networking). Do not upload this application to any Internet facing servers, as they will be compromised.**
 
-***DISCLAIMER*: I do not take responsibility for the way in which any one uses this application. The only purpose of this application is to be a test scenario for the Jetpack broken access control exploit and it should not be used maliciously. If your server is compromised via an installation of this application it is not my responsibility, it is the responsibility of the person(s) who uploaded and installed it.**
+***DISCLAIMER*: I do not take responsibility for the way in which any one uses this application. The only purpose of this application is to be a test scenario for the Jetpack 13.9 broken access control exploit and it should not be used maliciously. If your server is compromised via an installation of this application it is not my responsibility, it is the responsibility of the person(s) who uploaded and installed it.**
 
 ## Vulnerability info
 
@@ -18,14 +18,13 @@ This is a vulnerable application to test the exploit for the **Jetpack** broken 
 
 Here the steps to **setup** the environment:
 1. Launch `./up.sh` to start composition.
-2. Complete the installation of WordPress here: [http://localhost:1337/wp-admin/install.php](http://localhost:1337/wp-admin/install.php).
+2. Complete the installation of WordPress here: [https://localhost:1337/wp-admin/install.php](http://localhost:1337/wp-admin/install.php).
 3. Login into WordPress.
-4. Go to "*Tools*" > "*Network Setup*" ([http://localhost:1337/wp-admin/network.php](http://localhost:1337/wp-admin/network.php)) and complete manually the multisite configuration (accessing to the running container).
-   * It should be sufficient to complete the step #1: network configuration rules for `wp-config.php`.
-5. Go to "*Plugins*": [http://localhost:1337/wp-admin/plugins.php](http://localhost:1337/wp-admin/plugins.php).
-6. Click on "*Activate*" under the "*Jetpack*" plugin. **DO NOT UPDATE IT**, since we need the vulnerable version.
-7. Go to "*Jetpack*" > "*Settings*" > "*Writing*" and, in the "*Composing*" section, enable "*Jetpack Blocks give you the power to deliver quality content that hooks website visitors without needing to hire a developer or learn a single line of code.*".
-8. Create a new page in WordPress adding a "*Contact Form*" element.
+4. Go to "*Plugins*": [https://localhost:1337/wp-admin/plugins.php](http://localhost:1337/wp-admin/plugins.php).
+5. Click on "*Activate*" under the "*Jetpack*" plugin. **DO NOT UPDATE IT**, since we need the vulnerable version.
+6. Go to "*Jetpack*" > "*Settings*" > "*Writing*" and, in the "*Composing*" section, enable "*Jetpack Blocks give you the power to deliver quality content that hooks website visitors without needing to hire a developer or learn a single line of code.*".
+7. Create a new page in WordPress adding a "*Contact Form*" element.
+8. Visit the created page and use the contact form to populate feedbacks.
 
 The container will be called `vuln-wp-jetpack`.
 
@@ -56,7 +55,11 @@ To exploit the vulnerability, a request like the following is sufficient.
 GET /?rest_route=/wp/v2/feedback
 ```
 
-The request must contains cookies of a logged user of the blog.
+The request must contains an authorization header with an *Application Password* like the following.
+
+```
+Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX2FwcGxpY2F0aW9uX3Bhc3N3b3Jk
+```
 
 ## Authors
 

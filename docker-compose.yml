@@ -6,16 +6,13 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 1337:80
+      - 1337:443
     environment:
       WORDPRESS_DEBUG: 1
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
-      WORDPRESS_CONFIG_EXTRA: |
-        /* Multisite */
-        define('WP_ALLOW_MULTISITE', true );
 
   db:
     container_name: vuln-wp-jetpack-mysql
