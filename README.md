@@ -10,8 +10,10 @@ This is a vulnerable application to test the exploit for the **Jetpack** 13.9 br
 
 ## Vulnerability info
 
-* **Link**: [https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/](https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/)
+* **CVE-ID**: TBD
+* **Link**: TBD
 * **Description**: This vulnerability could be used by any logged in users on a site to read forms submitted by visitors on the site.
+* **Vendor link**: [https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/](https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/)
 * **Fix:** [https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd](https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd)
 
 ## Usage
@@ -60,6 +62,8 @@ The request must contains an authorization header with an *Application Password*
 ```
 Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX2FwcGxpY2F0aW9uX3Bhc3N3b3Jk
 ```
+
+An exploit script in Python can be found [here](https://github.com/m3ssap0/wordpress-jetpack-broken-access-control-exploit).
 
 ## Authors
 
