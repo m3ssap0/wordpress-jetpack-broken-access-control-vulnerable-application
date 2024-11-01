@@ -1,17 +1,17 @@
 # wordpress-jetpack-broken-access-control-vulnerable-application
 
-This is a vulnerable application to test the exploit for the **Jetpack** < 13.9.1 broken access control.
+This is a vulnerable application to test the exploit for the **Jetpack** < 13.9.1 broken access control (CVE-2024-9926).
 
 ## WARNING!
 
 **This application contains serious security vulnerabilities. Run it at your own risk! It is recommended using a backed-up and sheltered environment (such as a VM with a recent snapshot and host-only networking). Do not upload this application to any Internet facing servers, as they will be compromised.**
 
-***DISCLAIMER*: I do not take responsibility for the way in which any one uses this application. The only purpose of this application is to be a test scenario for the Jetpack < 13.9.1 broken access control exploit and it should not be used maliciously. If your server is compromised via an installation of this application it is not my responsibility, it is the responsibility of the person(s) who uploaded and installed it.**
+***DISCLAIMER*: I do not take responsibility for the way in which any one uses this application. The only purpose of this application is to be a test scenario for the Jetpack < 13.9.1 broken access control (CVE-2024-9926) exploit and it should not be used maliciously. If your server is compromised via an installation of this application it is not my responsibility, it is the responsibility of the person(s) who uploaded and installed it.**
 
 ## Vulnerability info
 
-* **CVE-ID**: TBD
-* **Link**: TBD
+* **CVE-ID**: CVE-2024-9926
+* **Link**: [https://www.cve.org/CVERecord?id=CVE-2024-9926](https://www.cve.org/CVERecord?id=CVE-2024-9926)
 * **Description**: This vulnerability could be used by any logged in users on a site to read forms submitted by visitors on the site.
 * **Vendor link**: [https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/](https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/)
 * **Fix:** [https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd](https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd)
