@@ -15,6 +15,7 @@ This is a vulnerable application to test the exploit for the **Jetpack** < 13.9.
 * **Description**: This vulnerability could be used by any logged in users on a site to read forms submitted by visitors on the site.
 * **Vendor link**: [https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/](https://jetpack.com/blog/jetpack-13-9-1-critical-security-update/)
 * **Fix:** [https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd](https://github.com/Automattic/jetpack-production/commit/18605ae8cdc7438c2088336c51f3db8d6a5b90fd)
+* **Official PoC:** [https://wpscan.com/vulnerability/669382af-f836-4896-bdcb-5c6a57c99bd9/](https://wpscan.com/vulnerability/669382af-f836-4896-bdcb-5c6a57c99bd9/)
 
 ## Usage
 
@@ -72,3 +73,7 @@ An exploit script in Python can be found [here](https://github.com/m3ssap0/wordp
 ## License
 
 This project is licensed under the Unlicense - see the **LICENSE** file for details.
+
+## Acknowledgments
+
+* [**Marc Montpas**](https://wpscan.com/vulnerability/669382af-f836-4896-bdcb-5c6a57c99bd9/), the security researcher who discovered the vulnerability.
